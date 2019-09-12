@@ -4,6 +4,7 @@ name: commit checks
 
 jobs:
   build:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         arch:
