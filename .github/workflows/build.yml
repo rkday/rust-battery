@@ -28,8 +28,6 @@ jobs:
           use-cross: true
           command: test
           args: --target '${{ matrix.arch }}'
-        # Cross does not support testing for FreeBSD
-        if: ${{ !matrix.arch.contains('freebsd') }}
 
       - uses: actions-rs/cargo@master
         with:
