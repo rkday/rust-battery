@@ -8,28 +8,28 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+
         os:
-            - ubuntu-latest
+          - ubuntu-latest
+          - macOS-latest
         toolchain:
-            - stable
-            - 1.31.0  # MSRV
+          - stable
+          - 1.31.0  # MSRV
         arch:
-          - i686-unknown-linux-gnu
           - x86_64-unknown-linux-gnu
-          - i686-pc-windows-gnu
           - x86_64-pc-windows-gnu
-          - i686-unknown-freebsd
           - x86_64-unknown-freebsd
+          - x86_64-apple-darwin
 
-        include:
-          # macOS targets can't be compiled on ubuntu by cross yet
+        # Since matrix does not allow to include totally new jobs,
+        # we are required to drop old one
+        exclude:
           - os: macOS-latest
-            toolchain: stable
-            arch: x86_64-apple-darwin
-
+            arch: x86_64-unknown-linux-gnu
           - os: macOS-latest
-            toolchain: 1.31.0
-            arch: x86_64-apple-darwin
+            arch: x86_64-pc-windows-gnu
+          - os: macOS-latest
+            arch: x86_64-unknown-freebsd
 
     steps:
       - uses: actions/checkout@master
