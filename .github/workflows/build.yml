@@ -8,6 +8,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        toolchain:
+            - stable
+            - 1.31.0  # MSRV
         arch:
           - i686-unknown-linux-gnu
           - x86_64-unknown-linux-gnu
@@ -17,9 +20,6 @@ jobs:
           - x86_64-pc-windows-gnu
           - i686-unknown-freebsd
           - x86_64-unknown-freebsd
-        toolchain:
-            - stable
-            - 1.31.0  # MSRV
 
     steps:
       - uses: actions/checkout@master
