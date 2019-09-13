@@ -24,6 +24,8 @@ jobs:
         # Since matrix does not allow to include totally new jobs,
         # we are required to drop old one
         exclude:
+          - os: ubuntu-latest
+            arch: x86_64-apple-darwin
           - os: macOS-latest
             arch: x86_64-unknown-linux-gnu
           - os: macOS-latest
