@@ -6,16 +6,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         arch:
-#          - i686-unknown-linux-gnu
+          - i686-unknown-linux-gnu
           - x86_64-unknown-linux-gnu
-#          - i686-apple-darwin
+          - i686-apple-darwin
           - x86_64-apple-darwin
-#          - i686-pc-windows-gnu
+          - i686-pc-windows-gnu
           - x86_64-pc-windows-gnu
-#          - i686-unknown-freebsd
-#          - x86_64-unknown-freebsd
+          - i686-unknown-freebsd
+          - x86_64-unknown-freebsd
 
     steps:
       - uses: actions/checkout@master
