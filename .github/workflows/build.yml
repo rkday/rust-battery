@@ -28,7 +28,7 @@ jobs:
         with:
           toolchain: ${{ matrix.toolchain }}
 
-      - run: rustup toolchain add ${{ matrix.arch }}
+      - run: rustup target add ${{ matrix.arch }}
 
       - uses: actions-rs/cargo@cross-dev
         with:
