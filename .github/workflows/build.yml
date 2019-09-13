@@ -49,7 +49,7 @@ jobs:
 
       - name: test
         # Not supported by cross yet
-        if: !contains(matrix.arch, 'freebsd')
+        if: contains(matrix.arch, 'freebsd') == false
         uses: actions-rs/cargo@cross-dev
         with:
           use-cross: true
