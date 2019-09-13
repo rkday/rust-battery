@@ -4,22 +4,32 @@ name: commit checks
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        os:
+            - ubuntu-latest
         toolchain:
             - stable
             - 1.31.0  # MSRV
         arch:
-#          - i686-unknown-linux-gnu
+          - i686-unknown-linux-gnu
           - x86_64-unknown-linux-gnu
-#          - i686-apple-darwin
-          - x86_64-apple-darwin
-#          - i686-pc-windows-gnu
+          - i686-pc-windows-gnu
           - x86_64-pc-windows-gnu
-#          - i686-unknown-freebsd
-#          - x86_64-unknown-freebsd
+          - i686-unknown-freebsd
+          - x86_64-unknown-freebsd
+
+        include:
+          # macOS targets can't be compiled on ubuntu by cross yet
+          - os: macOS-latest
+            toolchain: stable
+            arch: x86_64-apple-darwin
+
+          - os: macOS-latest
+            toolchain: 1.31.0
+            arch: x86_64-apple-darwin
 
     steps:
       - uses: actions/checkout@master
@@ -30,19 +40,24 @@ jobs:
           target: ${{ matrix.arch }}
           override: true
 
-      - uses: actions-rs/cargo@cross-dev
+      - name: build
+        uses: actions-rs/cargo@cross-dev
         with:
           use-cross: true
           command: build
           args: --target ${{ matrix.arch }}
 
-      - uses: actions-rs/cargo@cross-dev
+      - name: test
+        # Not supported by cross yet
+        if: !contains(matrix.arch, 'freebsd')
+        uses: actions-rs/cargo@cross-dev
         with:
           use-cross: true
           command: test
           args: --target ${{ matrix.arch }}
 
-      - uses: actions-rs/cargo@cross-dev
+      - name: clippy
+        uses: actions-rs/cargo@cross-dev
         with:
           use-cross: true
           command: clippy
