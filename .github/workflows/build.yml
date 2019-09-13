@@ -23,6 +23,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
+
+      - uses: actions-rs/toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+
       - uses: actions-rs/cargo@cross-dev
         with:
           use-cross: true
