@@ -17,6 +17,9 @@ jobs:
           - x86_64-pc-windows-gnu
           - i686-unknown-freebsd
           - x86_64-unknown-freebsd
+        toolchain:
+            - stable
+            - 1.31.0  # MSRV
 
     steps:
       - uses: actions/checkout@master
@@ -24,16 +27,19 @@ jobs:
         with:
           use-cross: true
           command: build
+          toolchain: ${{ matrix.toolchain }}
           args: --target ${{ matrix.arch }}
 
       - uses: actions-rs/cargo@cross-dev
         with:
           use-cross: true
           command: test
+          toolchain: ${{ matrix.toolchain }}
           args: --target ${{ matrix.arch }}
 
       - uses: actions-rs/cargo@cross-dev
         with:
           use-cross: true
           command: clippy
+          toolchain: ${{ matrix.toolchain }}
           args: --target ${{ matrix.arch }} -- -D warnings
