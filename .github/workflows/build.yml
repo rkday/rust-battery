@@ -29,21 +29,18 @@ jobs:
       - name: Build
         uses: actions-rs/cargo@master
         with:
-          use-cross: true
           command: build
           args: --target ${{ matrix.arch }}
 
       - name: Run tests
         uses: actions-rs/cargo@master
         with:
-          use-cross: true
           command: test
           args: --target ${{ matrix.arch }}
 
       - name: Run clippy
         uses: actions-rs/cargo@master
         with:
-          use-cross: true
           command: clippy
           args: --target ${{ matrix.arch }} -- -D warnings
 
@@ -70,21 +67,18 @@ jobs:
       - name: Build
         uses: actions-rs/cargo@master
         with:
-          use-cross: true
           command: build
           args: --target ${{ matrix.arch }}
 
       - name: Run tests
         uses: actions-rs/cargo@master
         with:
-          use-cross: true
           command: test
           args: --target ${{ matrix.arch }}
 
       - name: Run clippy
         uses: actions-rs/cargo@master
         with:
-          use-cross: true
           command: clippy
           args: --target ${{ matrix.arch }} -- -D warnings
 
@@ -110,20 +104,17 @@ jobs:
       - name: Build
         uses: actions-rs/cargo@master
         with:
-          use-cross: true
           command: build
           args: --target ${{ matrix.arch }}
 
       - name: Run tests
         uses: actions-rs/cargo@master
         with:
-          use-cross: true
           command: test
           args: --target ${{ matrix.arch }}
 
       - name: Run clippy
         uses: actions-rs/cargo@master
         with:
-          use-cross: true
           command: clippy
           args: --target ${{ matrix.arch }} -- -D warnings
