@@ -20,26 +20,26 @@ jobs:
           - x86_64-unknown-linux-gnu
     steps:
       - uses: actions/checkout@master
-      - uses: actions-rs/toolchain@master
+      - uses: actions-rs/toolchain@dev
         with:
           toolchain: ${{ matrix.toolchain }}
           target: ${{ matrix.arch }}
           override: true
 
       - name: Build
-        uses: actions-rs/cargo@master
+        uses: actions-rs/cargo@dev
         with:
           command: build
           args: --target ${{ matrix.arch }}
 
       - name: Run tests
-        uses: actions-rs/cargo@master
+        uses: actions-rs/cargo@dev
         with:
           command: test
           args: --target ${{ matrix.arch }}
 
       - name: Run clippy
-        uses: actions-rs/cargo@master
+        uses: actions-rs/cargo@dev
         with:
           command: clippy
           args: --target ${{ matrix.arch }} -- -D warnings
@@ -58,26 +58,26 @@ jobs:
           - x86_64-pc-windows-msvc
     steps:
       - uses: actions/checkout@master
-      - uses: actions-rs/toolchain@master
+      - uses: actions-rs/toolchain@dev
         with:
           toolchain: ${{ matrix.toolchain }}
           target: ${{ matrix.arch }}
           override: true
 
       - name: Build
-        uses: actions-rs/cargo@master
+        uses: actions-rs/cargo@dev
         with:
           command: build
           args: --target ${{ matrix.arch }}
 
       - name: Run tests
-        uses: actions-rs/cargo@master
+        uses: actions-rs/cargo@dev
         with:
           command: test
           args: --target ${{ matrix.arch }}
 
       - name: Run clippy
-        uses: actions-rs/cargo@master
+        uses: actions-rs/cargo@dev
         with:
           command: clippy
           args: --target ${{ matrix.arch }} -- -D warnings
@@ -95,26 +95,26 @@ jobs:
           - x86_64-apple-darwin
     steps:
       - uses: actions/checkout@master
-      - uses: actions-rs/toolchain@master
+      - uses: actions-rs/toolchain@dev
         with:
           toolchain: ${{ matrix.toolchain }}
           target: ${{ matrix.arch }}
           override: true
 
       - name: Build
-        uses: actions-rs/cargo@master
+        uses: actions-rs/cargo@dev
         with:
           command: build
           args: --target ${{ matrix.arch }}
 
       - name: Run tests
-        uses: actions-rs/cargo@master
+        uses: actions-rs/cargo@dev
         with:
           command: test
           args: --target ${{ matrix.arch }}
 
       - name: Run clippy
-        uses: actions-rs/cargo@master
+        uses: actions-rs/cargo@dev
         with:
           command: clippy
           args: --target ${{ matrix.arch }} -- -D warnings
