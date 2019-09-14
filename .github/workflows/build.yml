@@ -18,34 +18,34 @@ jobs:
         arch:
           - i686-unknown-linux-gnu
           - x86_64-unknown-linux-gnu
-      steps:
-        - uses: actions/checkout@master
-        - uses: actions-rs/toolchain@master
-          with:
-            toolchain: ${{ matrix.toolchain }}
-            target: ${{ matrix.arch }}
-            override: true
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions-rs/toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          target: ${{ matrix.arch }}
+          override: true
 
-        - name: build
-          uses: actions-rs/cargo@master
-          with:
-            use-cross: true
-            command: build
-            args: --target ${{ matrix.arch }}
+      - name: build
+        uses: actions-rs/cargo@master
+        with:
+          use-cross: true
+          command: build
+          args: --target ${{ matrix.arch }}
 
-        - name: test
-          uses: actions-rs/cargo@master
-          with:
-            use-cross: true
-            command: test
-            args: --target ${{ matrix.arch }}
+      - name: test
+        uses: actions-rs/cargo@master
+        with:
+          use-cross: true
+          command: test
+          args: --target ${{ matrix.arch }}
 
-        - name: clippy
-          uses: actions-rs/cargo@master
-          with:
-            use-cross: true
-            command: clippy
-            args: --target ${{ matrix.arch }} -- -D warnings
+      - name: clippy
+        uses: actions-rs/cargo@master
+        with:
+          use-cross: true
+          command: clippy
+          args: --target ${{ matrix.arch }} -- -D warnings
 
   windows:
     name: Windows
@@ -59,34 +59,34 @@ jobs:
         arch:
           - i686-pc-windows-msvc
           - x86_64-pc-windows-msvc
-      steps:
-        - uses: actions/checkout@master
-        - uses: actions-rs/toolchain@master
-          with:
-            toolchain: ${{ matrix.toolchain }}
-            target: ${{ matrix.arch }}
-            override: true
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions-rs/toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          target: ${{ matrix.arch }}
+          override: true
 
-        - name: build
-          uses: actions-rs/cargo@master
-          with:
-            use-cross: true
-            command: build
-            args: --target ${{ matrix.arch }}
+      - name: build
+        uses: actions-rs/cargo@master
+        with:
+          use-cross: true
+          command: build
+          args: --target ${{ matrix.arch }}
 
-        - name: test
-          uses: actions-rs/cargo@master
-          with:
-            use-cross: true
-            command: test
-            args: --target ${{ matrix.arch }}
+      - name: test
+        uses: actions-rs/cargo@master
+        with:
+          use-cross: true
+          command: test
+          args: --target ${{ matrix.arch }}
 
-        - name: clippy
-          uses: actions-rs/cargo@master
-          with:
-            use-cross: true
-            command: clippy
-            args: --target ${{ matrix.arch }} -- -D warnings
+      - name: clippy
+        uses: actions-rs/cargo@master
+        with:
+          use-cross: true
+          command: clippy
+          args: --target ${{ matrix.arch }} -- -D warnings
 
   macos:
     name: macOS
@@ -100,31 +100,31 @@ jobs:
         arch:
           - i686-apple-darwin
           - x86_64-apple-darwin
-      steps:
-        - uses: actions/checkout@master
-        - uses: actions-rs/toolchain@master
-          with:
-            toolchain: ${{ matrix.toolchain }}
-            target: ${{ matrix.arch }}
-            override: true
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions-rs/toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          target: ${{ matrix.arch }}
+          override: true
 
-        - name: build
-          uses: actions-rs/cargo@master
-          with:
-            use-cross: true
-            command: build
-            args: --target ${{ matrix.arch }}
+      - name: build
+        uses: actions-rs/cargo@master
+        with:
+          use-cross: true
+          command: build
+          args: --target ${{ matrix.arch }}
 
-        - name: test
-          uses: actions-rs/cargo@master
-          with:
-            use-cross: true
-            command: test
-            args: --target ${{ matrix.arch }}
+      - name: test
+        uses: actions-rs/cargo@master
+        with:
+          use-cross: true
+          command: test
+          args: --target ${{ matrix.arch }}
 
-        - name: clippy
-          uses: actions-rs/cargo@master
-          with:
-            use-cross: true
-            command: clippy
-            args: --target ${{ matrix.arch }} -- -D warnings
+      - name: clippy
+        uses: actions-rs/cargo@master
+        with:
+          use-cross: true
+          command: clippy
+          args: --target ${{ matrix.arch }} -- -D warnings
