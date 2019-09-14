@@ -26,21 +26,21 @@ jobs:
           target: ${{ matrix.arch }}
           override: true
 
-      - name: build
+      - name: Build
         uses: actions-rs/cargo@master
         with:
           use-cross: true
           command: build
           args: --target ${{ matrix.arch }}
 
-      - name: test
+      - name: Run tests
         uses: actions-rs/cargo@master
         with:
           use-cross: true
           command: test
           args: --target ${{ matrix.arch }}
 
-      - name: clippy
+      - name: Run clippy
         uses: actions-rs/cargo@master
         with:
           use-cross: true
@@ -67,21 +67,21 @@ jobs:
           target: ${{ matrix.arch }}
           override: true
 
-      - name: build
+      - name: Build
         uses: actions-rs/cargo@master
         with:
           use-cross: true
           command: build
           args: --target ${{ matrix.arch }}
 
-      - name: test
+      - name: Run tests
         uses: actions-rs/cargo@master
         with:
           use-cross: true
           command: test
           args: --target ${{ matrix.arch }}
 
-      - name: clippy
+      - name: Run clippy
         uses: actions-rs/cargo@master
         with:
           use-cross: true
@@ -98,7 +98,6 @@ jobs:
           - stable
           - 1.31.0  # MSRV
         arch:
-          - i686-apple-darwin
           - x86_64-apple-darwin
     steps:
       - uses: actions/checkout@master
@@ -108,21 +107,21 @@ jobs:
           target: ${{ matrix.arch }}
           override: true
 
-      - name: build
+      - name: Build
         uses: actions-rs/cargo@master
         with:
           use-cross: true
           command: build
           args: --target ${{ matrix.arch }}
 
-      - name: test
+      - name: Run tests
         uses: actions-rs/cargo@master
         with:
           use-cross: true
           command: test
           args: --target ${{ matrix.arch }}
 
-      - name: clippy
+      - name: Run clippy
         uses: actions-rs/cargo@master
         with:
           use-cross: true
