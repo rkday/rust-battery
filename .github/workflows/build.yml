@@ -10,7 +10,6 @@ jobs:
     name: Linux
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: true
       matrix:
         toolchain:
           - stable
@@ -51,7 +50,6 @@ jobs:
     name: Windows
     runs-on: windows-latest
     strategy:
-      fail-fast: true
       matrix:
         toolchain:
           - stable
@@ -92,7 +90,6 @@ jobs:
     name: macOS
     runs-on: macOS-latest
     strategy:
-      fail-fast: true
       matrix:
         toolchain:
           - stable
